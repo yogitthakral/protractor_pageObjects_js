@@ -12,7 +12,8 @@ exports.config = {
     //seleniumServerJar: "node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.4.0.jar",
     directConnect: true,
 
-    specs: ['specs/*Spec.js'],
+    //specs: ['specs/*Spec.js'],
+    specs: ['specs/friendSpec.js'],
     baseUrl: 'http://qualityshepherd.com',
     framework: 'jasmine',
 

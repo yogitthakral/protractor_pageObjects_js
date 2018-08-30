@@ -42,6 +42,7 @@ export default class BasePage {
      * @requires page have both `url` and `pageLoaded` properties
      */
     goto() {
+        console.log("URL in basePage: " + this.url);
         browser.get(this.url, this.timeout.xl);
         return this.loaded();
     }
