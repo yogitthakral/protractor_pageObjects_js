@@ -2,9 +2,20 @@
  * Example tests of an Angular site
  */
 import friendPage from '../pages/friendPage';
+import aboutPage from '../pages/aboutPage';
 import Chance from 'chance';
 const chance = new Chance();
 const EXISTING_NAME = 'Paul';
+
+describe ('About page', () => {
+    beforeEach(() => {
+        
+        aboutPage.goto();
+        //aboutPage.pageLoaded();
+        
+    });
+});
+
 
 describe ('angular app', () => {
 	beforeEach(() => {

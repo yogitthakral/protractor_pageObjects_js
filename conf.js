@@ -13,7 +13,7 @@ exports.config = {
     directConnect: true,
 
     //specs: ['specs/*Spec.js'],
-    specs: ['specs/friendSpec.js'],
+    specs: ['specs/aboutSpec.js'],
     baseUrl: 'http://qualityshepherd.com',
     framework: 'jasmine',
 
