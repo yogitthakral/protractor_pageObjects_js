@@ -7,15 +7,6 @@ import Chance from 'chance';
 const chance = new Chance();
 const EXISTING_NAME = 'Paul';
 
-describe ('About page', () => {
-    beforeEach(() => {
-        
-        aboutPage.goto();
-        //aboutPage.pageLoaded();
-        
-    });
-});
-
 
 describe ('angular app', () => {
 	beforeEach(() => {

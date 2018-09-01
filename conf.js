@@ -2,7 +2,7 @@
 require("babel-register")({
     presets: [ 'es2015' ]
 });
-
+var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 exports.config = {
     /**
      *  Uncomment ONE of the following to connect to: seleniumServerJar OR directConnect. Protractor
@@ -12,18 +12,34 @@ exports.config = {
     //seleniumServerJar: "node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.4.0.jar",
     directConnect: true,
 
-    //specs: ['specs/*Spec.js'],
-    specs: ['specs/test_external_links_speck.js'],
+    specs: ['specs/*links_Spec.js'],
+    //specs: ['specs/test_external_links_speck.js'],
     baseUrl: 'http://qualityshepherd.com',
     framework: 'jasmine',
+    jasmineNodeOpts: {
+        showColors: true,
+        defaultTimeoutInterval: 30000
+    
+    },
 
     onPrepare: () => {
         // set browser size...
         browser.manage().window().setSize(1024, 800);
 
         // better jasmine 2 reports...
-        const SpecReporter = require('jasmine-spec-reporter');
-        jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'specs'}));
+        //const SpecReporter = require('jasmine-spec-reporter');
+        //jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'specs'}));
+
+        jasmine.getEnv().addReporter(
+            new Jasmine2HtmlReporter({
+                savePath: './test/reports',
+                fileName: "test",
+                fileNameDateSuffix: true,
+                takeScreenshotsOnlyOnFailures: true,
+                cleanDestination: false
+                //git test
+            })
+        );
     },
 
     capabilities: {
