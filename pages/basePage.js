@@ -32,7 +32,12 @@ export default class BasePage {
      */
     loaded() {
         return browser.wait(() => {
-            return this.pageLoaded();
+            if(this.pageLoaded()){
+                return this.pageLoaded();
+            } else {
+                console.info('element for pageloaded not found');
+            }
+            
         }, this.timeout.xl, 'timeout: waiting for page to load. The url is: ' + this.url);
     }
 
@@ -84,6 +89,9 @@ export default class BasePage {
     titleIs(title) {
         return protractor.ExpectedConditions.titleIs(title);
     }
+    
+
+
 
     /**
      * test if an element has a class

@@ -2,6 +2,7 @@
 browser.ignoreSynchronization = true;
 import BasePage from './basePage';
 import search from './searchModule';
+import { element } from 'protractor';
 
 class QsHomePage extends BasePage {
     constructor() {
@@ -18,7 +19,8 @@ class QsHomePage extends BasePage {
         this.githubLink = $('a#githubLink');
         // pagination
         this.prevPageLink = element(by.cssContainingText('a', '← Older Entries'));
-
+        this.link_testbot = element(by.cssContainingText('a', 'TestingBot'))
+        this.url_testingbot = 'https://testingbot.com/';
         this.url = 'http://qualityshepherd.com';
         // pageLoaded is used by `.loaded()` to test that we're on a page
         this.pageLoaded = this.and(
@@ -63,5 +65,12 @@ class QsHomePage extends BasePage {
             }
         });
     }
+
+     waitForUrlToChangeTo() {
+        var EC = browser.ExpectedConditions;
+        browser.wait(EC.urlContains('testingbot'), 10000); // Checks that the current URL contains the expected text
+       // browser.wait(EC.urlIs('https://www.testingbot.com'), 10000); // Checks that the current URL matches the expected text
+    }
+
 }
 export default new QsHomePage();
