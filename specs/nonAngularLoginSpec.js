@@ -5,6 +5,7 @@ import userData from '../data/userData';
 describe ('non-angular login', () => {
     beforeEach(() => {
         loginPage.goto();
+        
     });
 
     it('should display message for invalid credentials', () => {

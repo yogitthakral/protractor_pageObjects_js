@@ -3,6 +3,9 @@ require("babel-register")({
     presets: [ 'es2015' ]
 });
 var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
+
+
+
 exports.config = {
     /**
      *  Uncomment ONE of the following to connect to: seleniumServerJar OR directConnect. Protractor
@@ -12,9 +15,11 @@ exports.config = {
     //seleniumServerJar: "node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.4.0.jar",
     directConnect: true,
 
-    specs: ['specs/*links_Spec.js'],
-    //specs: ['specs/test_external_links_speck.js'],
-    baseUrl: 'http://qualityshepherd.com',
+    specs: 
+    //['specs/*Spec.js'],
+    ['specs/usermgm/*Spec.js'],
+    //baseUrl: 'http://qualityshepherd.com',
+    baseUrl: 'https://stp.stp-cloud-dev.azure.local/identity/',   
     framework: 'jasmine',
     jasmineNodeOpts: {
         showColors: true,
@@ -24,19 +29,40 @@ exports.config = {
 
     onPrepare: () => {
         // set browser size...
+var a = this;
         browser.manage().window().setSize(1024, 800);
+
+        scriptName=function(){
+            var fileName_;
+             browser.getProcessedConfig().then(function(config){              
+                var fullName = config.specs[0];
+                a = fullName.substring(fullName.lastIndexOf('\\')+1);
+                return a;
+            });
+                    
+        
+            console.log('fileName_:', fileName_); 
+            return fileName_;
+        };
+
+
 
         // better jasmine 2 reports...
         //const SpecReporter = require('jasmine-spec-reporter');
         //jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'specs'}));
 
         jasmine.getEnv().addReporter(
+            
+           
             new Jasmine2HtmlReporter({
+                
                 savePath: './test/reports',
-                fileName: "test",
-                fileNameDateSuffix: true,
+                fileName: 'result_' ,
+                fileNameDateSuffix: false,
                 takeScreenshotsOnlyOnFailures: true,
+                consolidate: true,
                 cleanDestination: false
+              
                 //git test
             })
         );
@@ -69,5 +95,6 @@ exports.config = {
         // overrides jasmine's print method to report dot syntax for custom reports
         print: () => {},
         defaultTimeoutInterval: 50000
-    }
+    },
+
 };

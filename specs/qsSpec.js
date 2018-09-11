@@ -10,7 +10,9 @@ describe('Quality Shepherd blog', () =>  {
 	});
 
 	it('should display 5 posts per page', () => {
+		
 		expect(qsHomePage.posts.count()).toBe(5);
+		
 	});
 
 	it('should return search results', () =>  {
