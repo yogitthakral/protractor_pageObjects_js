@@ -5,7 +5,7 @@ import BasePage from './basePage';
 class LoginPage extends BasePage {
     constructor() {
         super();
-        this.url = 'login';
+        this.url = 'identity/login';
         this.tb_user = element(by.xpath("//input[@placeholder='Username']"));
         this.tb_password = element(by.xpath("//input[@placeholder='Password']"));
         this.btn_login = element(by.xpath("//button[contains(text(),'Login')]"));

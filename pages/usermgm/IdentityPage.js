@@ -5,15 +5,17 @@ import BasePage from './basePage';
 class IdentityPage extends BasePage {
     constructor() {
         super();
-        this.url = 'identity';
-        this.link_logout = element(by.xpath("//a[contains(@href,'logout')]"));
-        this.pageLoaded = this.isClickable(this.link_logout);
+        this.url = 'identityadmin/#/grants';
+        this.dropdown_user = element(by.xpath("//a[@class='nav-link dropdown-toggle']"));
+        this.dropdown_user_logout = element(by.xpath("//a[contains(text() , 'Log Out')]"));
+        this.pageLoaded = this.isClickable(this.dropdown_user);
         
     }
 
       logout() {
 
-       this.link_logout.click();
+       this.dropdown_user.click();
+       this.dropdown_user_logout.click();
         
     }
 }
