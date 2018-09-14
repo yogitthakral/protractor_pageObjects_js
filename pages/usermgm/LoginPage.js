@@ -1,5 +1,6 @@
 browser.ignoreSynchronization = true;
 import BasePage from './basePage';
+import {element} from 'protractor';
 
 
 class LoginPage extends BasePage {
@@ -9,7 +10,7 @@ class LoginPage extends BasePage {
         this.tb_user = element(by.xpath("//input[@placeholder='Username']"));
         this.tb_password = element(by.xpath("//input[@placeholder='Password']"));
         this.btn_login = element(by.xpath("//button[contains(text(),'Login')]"));
-        this.pageLoaded = this.isClickable(this.tb_password);
+        this.pageLoaded = this.titleIs('Login - UserManagement.Identity');
         
     }
 

@@ -1,4 +1,4 @@
-browser.ignoreSynchronization = true;
+browser.ignoreSynchronization = false;
 import BasePage from './basePage';
 
 

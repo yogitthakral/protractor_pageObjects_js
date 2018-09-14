@@ -9,6 +9,8 @@ describe('About Page', () => {
 
     it('has Text available h2 About', () => {
         console.info("Hello");
-        aboutPage.hasText(aboutPage.text_about);
+        expect(aboutPage.loaded()).toBe(true);
+        expect(aboutPage.about_title_exists()).toBe(true);
+        
     });
 });

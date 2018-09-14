@@ -16,11 +16,11 @@ exports.config = {
     directConnect: true,
 
     specs:
-    //['specs/*Spec.js'],
+    //['specs/aboutSpec.js'],
     ['specs/usermgm/*Spec.js'],
     //baseUrl: 'http://qualityshepherd.com',
     //baseUrl: 'https://stp.stp-cloud-dev.azure.local/identity/',   
-    baseUrl: 'https://stp.stp-cloud-dev.azure.local/identityadmin/#/welcome',
+    baseUrl: 'https://stp.stp-cloud-dev.azure.local/',
     framework: 'jasmine',
     jasmineNodeOpts: {
         showColors: true,
@@ -65,6 +65,7 @@ var a = this;
                 cleanDestination: false
               
                 //git test
+                
             })
         );
     },
