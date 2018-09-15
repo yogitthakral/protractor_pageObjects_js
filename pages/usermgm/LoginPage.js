@@ -1,4 +1,5 @@
 browser.ignoreSynchronization = true;
+
 import BasePage from './basePage';
 import {element} from 'protractor';
 
@@ -15,11 +16,14 @@ class LoginPage extends BasePage {
     }
 
       valid_login() {
+        browser.waitForAngularEnabled(false);
        this.tb_user.click();
        this.tb_user.sendKeys('Manuel');
        this.tb_password.click();
        this.tb_password.sendKeys('mn');
        this.btn_login.click();
+       
+       
        
         
     }
