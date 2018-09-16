@@ -19,26 +19,18 @@ describe('LoginPage', () => {
         LandingPage.goto_login_page();
        expect(LoginPage.loaded()).toBe(true);
         LoginPage.valid_login();
-        //loginPage.hasText(loginPage.text_about);
         expect(IdentityPage.loaded()).toBe(true);
         IdentityPage.goto_apis();
         expect(ApisPage.loaded()).toBe(true);
+        ApisPage.create_api();
+        expect(ApisNewPage.loaded()).toBe(true);
+        ApisNewPage.fill_form_new_api('abc', 'abc');
+        expect(ApisPage.loaded()).toBe(true);
         ApisPage.delete_api('abc');
-        browser.pause();
         browser.wait(protractor.ExpectedConditions.alertIsPresent(), 10000);
         browser.switchTo().alert().accept();
         
-        
-
-
-
-       /* ApisPage.create_api();
-        expect(ApisNewPage.loaded()).toBe(true);
-        ApisNewPage.fill_form_new_api();
-        expect(ApisPage.loaded()).toBe(true);
-    */
-        browser.pause();
-        
+     
 
         //IdentityPage.isClickable(IdentityPage.sidebar_link_apis).toBe(true);
         

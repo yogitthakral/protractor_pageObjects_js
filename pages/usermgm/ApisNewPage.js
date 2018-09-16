@@ -16,11 +16,14 @@ class ApisNewPage extends BasePage {
         
     }
 
-    fill_form_new_api(){
+    fill_form_new_api(name, description){
         console.info('api name fill');
-        this.name.sendKeys('test');
-        this.displayName.sendKeys('test');
+        this.name.sendKeys(name);
+        this.displayName.sendKeys(description);
+        browser.logger.info('click save button');
+      //  browser.waitForAngularEnabled(false);
         this.save_api.click();
+        browser.logger.info('after click save button');
         
     }
 

@@ -17,6 +17,7 @@ class LoginPage extends BasePage {
 
       valid_login() {
         browser.waitForAngularEnabled(false);
+        browser.logger.info("Testing Log4js");
        this.tb_user.click();
        this.tb_user.sendKeys('Manuel');
        this.tb_password.click();

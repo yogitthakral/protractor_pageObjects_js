@@ -3,6 +3,13 @@ require("babel-register")({
     presets: [ 'es2015' ]
 });
 var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
+var log4js = require('log4js');
+var log4js_ptor = require('log4js-protractor-appender')
+var fs = require('fs');
+var d = new Date();
+var timestamp = d.toLocaleDateString();
+var log_filename = './logs/log_'+timestamp+'-'+d.getHours()+'_'+ d.getMinutes()+'.log'
+
 
 
 
@@ -27,11 +34,32 @@ exports.config = {
         defaultTimeoutInterval: 30000
     
     },
-
+  beforeLaunch:function(){
+     
+        log4js.configure({
+            
+            appenders: {
+                fileLog: { type: 'file', filename: log_filename },
+                console_pa: { type: 'log4js-protractor-appender' },
+                console: { type: 'stdout' }
+                },
+                categories: {
+                file: { appenders: ['fileLog'], level: 'info' },
+                ptor_appender: { appenders: ['console_pa'], level: 'info' },
+                another: { appenders: ['console'], level: 'info' },
+                default: { appenders: ['console', 'fileLog'], level: 'info' }
+                },
+            
+        });
+    },  
     onPrepare: () => {
         // set browser size...
-var a = this;
+        var a = this;
         browser.manage().window().setSize(1024, 800);
+
+        browser.logger = log4js.getLogger('file');
+       browser.logger.info('asfsadfsdafsdf');
+        
 
         scriptName=function(){
             var fileName_;
